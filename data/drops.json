@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "label": "MDN SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG",
+      "note": "SVGはベクター図形、パス、グループ、属性アニメーションの基礎として使う。"
+    },
+    {
+      "label": "MDN CSS Animations",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations",
+      "note": "CSS animationでDOMベースのループ表現を作るための参照にする。"
+    }
+  ],
+  "drops": [
+    {
+      "date": "2026-08-08",
+      "title": "Vector Signal Rings",
+      "loopSeconds": 12,
+      "palette": [1.0, 0.81, 0.35, 0.25, 0.88, 0.68],
+      "copy": "SVG/CSS VJ Siteの最初のフレーム。リング、スポーク、矩形グリフを使ったベクター抽象ループで、ロゴモーションや軽量なWebサンプルに展開しやすい。",
+      "why": "SVG/CSSは軽量なベクター表現、ロゴモーション、UI的な線形パターンに向く。CanvasやThree.jsとは違い、図形そのものをDOMとして扱えるため、サンプル公開とコード共有の相性が良い。まずは日次データ、販売リンク、書き出し導線を揃えたフレームを作る。"
+    }
+  ]
+}
