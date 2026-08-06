@@ -1,0 +1,49 @@
+{
+  "date": "2026-08-08",
+  "headline": "Vector Signal Rings",
+  "headlineEn": "Vector Signal Rings",
+  "summary": "SVG/CSS VJ Siteの最初のフレーム。リング、スポーク、矩形グリフを使ったベクター抽象ループで、ロゴモーションや軽量なWebサンプルに展開しやすい。",
+  "summaryEn": "SVG/CSS VJ Siteの最初のフレーム。リング、スポーク、矩形グリフを使ったベクター抽象ループで、ロゴモーションや軽量なWebサンプルに展開しやすい。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-08_vector-signal-rings.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "MDN SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+    },
+    {
+      "label": "MDN CSS Animations",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "SVG/CSSは軽量なベクター表現、ロゴモーション、UI的な線形パターンに向く。CanvasやThree.jsとは違い、図形そのものをDOMとして扱えるため、サンプル公開とコード共有の相性が良い。まずは日次データ、販売リンク、書き出し導線を揃えたフレームを作る。",
+      "bodyEn": "SVG/CSSは軽量なベクター表現、ロゴモーション、UI的な線形パターンに向く。CanvasやThree.jsとは違い、図形そのものをDOMとして扱えるため、サンプル公開とコード共有の相性が良い。まずは日次データ、販売リンク、書き出し導線を揃えたフレームを作る。",
+      "links": [
+        {
+          "label": "MDN SVG",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+        },
+        {
+          "label": "MDN CSS Animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+        }
+      ]
+    },
+    {
+      "title": "販売用データへの展開",
+      "titleEn": "Sales package route",
+      "body": "SVG CSS VJ Site はGitHub Pages上では軽量なサンプルとして公開し、MP4、alpha MOV、プロジェクトファイルなどの重い販売データはGumroadまたはPatreonへ置く前提です。",
+      "bodyEn": "SVG CSS VJ Site is published on GitHub Pages as a lightweight sample. Heavy saleable files such as MP4, alpha MOV, and project files should live on Gumroad or Patreon."
+    }
+  ]
+}
