@@ -58,8 +58,8 @@
     {
       "title": "今日のミニ試作候補",
       "titleEn": "Today's mini prototype candidate",
-      "body": "Logo Pulse Mesh を 20 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
-      "bodyEn": "Logo Pulse Mesh is fixed as a 20-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "body": "Logo Pulse Mesh を 20 秒でループする独立SVG/CSSサンプルとして固定しました。iframeやWebGLに依存せず、出力ページ単体でベクターアニメーションを再生できるため、軽量な確認用ページ、ロゴ差し替え展開、販売用レンダー候補として扱いやすい構成です。",
+      "bodyEn": "Logo Pulse Mesh is fixed as a standalone 20-second looping SVG/CSS sample. It does not depend on an iframe or WebGL, so the output page can play the vector animation directly and remain useful for lightweight review, logo replacement variants, and saleable render selection.",
       "links": [
         {
           "label": "Today's sample",
