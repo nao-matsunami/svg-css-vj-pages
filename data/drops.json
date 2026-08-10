@@ -13,6 +13,29 @@
   ],
   "drops": [
     {
+      "date": "2026-08-10",
+      "title": "Logo Pulse Mesh",
+      "loopSeconds": 8,
+      "palette": [
+        0.95,
+        0.765,
+        0.285,
+        0.275,
+        0.859,
+        0.86
+      ],
+      "copy": "SVGとCSS animationで構成する、軽量なベクターVJループ。",
+      "why": "SVG/CSSはベクター図形をDOMとして扱えるため、軽量なサンプル公開とコード共有に向く。今日は線形パターンと軌道グリフのフレームを優先した。",
+      "research": [
+        {
+          "date": "2026-08-10",
+          "summary": "SVG CSS VJ Site の日次レポートを追加。追加調査がある日は --notes-file で検索要約と出典を差し込む。",
+          "sources": [],
+          "updatedAt": "2026-08-10T06:27:57.372Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-08",
       "title": "Vector Signal Rings",
       "loopSeconds": 12,
