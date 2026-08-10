@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-11",
+      "title": "Dash Phase Gate",
+      "loopSeconds": 20,
+      "palette": [
+        0.285,
+        0.758,
+        0.95,
+        0.86,
+        0.275,
+        0.527
+      ],
+      "copy": "DOM上の図形を日付シードで配置する、コード共有向きのVJ素材。",
+      "why": "販売用の高品質映像は後でMac mini側で生成し、GitHub Pagesでは軽量なベクターサンプルとして見せる運用にする。",
+      "research": [
+        {
+          "date": "2026-08-11",
+          "summary": "今日はSVG/CSSのベクター性を優先した。ロゴモーション、線形グリフ、軽量Webサンプルには、Canvasよりも図形単位で再編集しやすいSVGが向く。",
+          "sources": [
+            {
+              "label": "MDN SVG",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG",
+              "note": "SVG図形と属性確認の起点。"
+            },
+            {
+              "label": "MDN CSS Animations",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations",
+              "note": "CSSループアニメーション確認。"
+            }
+          ],
+          "updatedAt": "2026-08-10T21:45:10.342Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-10",
       "title": "Logo Pulse Mesh",
       "loopSeconds": 8,
