@@ -29,9 +29,20 @@
       "research": [
         {
           "date": "2026-08-10",
-          "summary": "SVG CSS VJ Site の日次レポートを追加。追加調査がある日は --notes-file で検索要約と出典を差し込む。",
-          "sources": [],
-          "updatedAt": "2026-08-10T06:27:57.372Z"
+          "summary": "今日はSVGのmask/filter方向を見た。販売素材としては、黒背景の発光素材だけでなく、ベクターのロゴ風モーションやUIパターンも別ラインにできる。",
+          "sources": [
+            {
+              "label": "MDN SVG filter",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter",
+              "note": "SVGフィルタ表現の確認。"
+            },
+            {
+              "label": "MDN SVG mask",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask",
+              "note": "マスク表現の確認。"
+            }
+          ],
+          "updatedAt": "2026-08-10T07:36:11.696Z"
         }
       ]
     },
