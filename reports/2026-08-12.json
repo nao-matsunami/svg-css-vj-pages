@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-12",
+  "headline": "Glyph Orbit Score",
+  "headlineEn": "Glyph Orbit Score",
+  "summary": "ロゴモーションやWebサンプルに展開しやすい、線と図形の抽象ループ。",
+  "summaryEn": "ロゴモーションやWebサンプルに展開しやすい、線と図形の抽象ループ。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-12_glyph-orbit-score.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "MDN SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+    },
+    {
+      "label": "MDN CSS Animations",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+    },
+    {
+      "label": "MDN SVG filter",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter"
+    },
+    {
+      "label": "MDN SVG mask",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "CanvasやThree.jsと違い、SVG/CSSは図形そのものを編集・再利用しやすい。ロゴモーションやUI的なVJ素材へ展開する前提で作る。",
+      "bodyEn": "CanvasやThree.jsと違い、SVG/CSSは図形そのものを編集・再利用しやすい。ロゴモーションやUI的なVJ素材へ展開する前提で作る。",
+      "links": [
+        {
+          "label": "MDN SVG",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+        },
+        {
+          "label": "MDN CSS Animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+        }
+      ]
+    },
+    {
+      "title": "Daily Research 2026-08-12",
+      "titleEn": "Daily Research 2026-08-12",
+      "body": "今日はSVGのmask/filter方向を見た。販売素材としては、黒背景の発光素材だけでなく、ベクターのロゴ風モーションやUIパターンも別ラインにできる。",
+      "bodyEn": "今日はSVGのmask/filter方向を見た。販売素材としては、黒背景の発光素材だけでなく、ベクターのロゴ風モーションやUIパターンも別ラインにできる。",
+      "links": [
+        {
+          "label": "MDN SVG filter",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter"
+        },
+        {
+          "label": "MDN SVG mask",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask"
+        }
+      ]
+    },
+    {
+      "title": "今日のミニ試作候補",
+      "titleEn": "Today's mini prototype candidate",
+      "body": "Glyph Orbit Score を 16 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
+      "bodyEn": "Glyph Orbit Score is fixed as a 16-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "links": [
+        {
+          "label": "Today's sample",
+          "url": "../outputs/2026-08-12_glyph-orbit-score.html"
+        }
+      ]
+    }
+  ]
+}
