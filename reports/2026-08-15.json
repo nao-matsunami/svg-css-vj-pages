@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-15",
+  "headline": "Glyph Orbit Score",
+  "headlineEn": "Glyph Orbit Score",
+  "summary": "SVGとCSS animationで構成する、軽量なベクターVJループ。",
+  "summaryEn": "SVGとCSS animationで構成する、軽量なベクターVJループ。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-15_glyph-orbit-score.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "MDN SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+    },
+    {
+      "label": "MDN CSS Animations",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+    },
+    {
+      "label": "MDN SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+    },
+    {
+      "label": "MDN CSS Animations",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "SVG/CSSはベクター図形をDOMとして扱えるため、軽量なサンプル公開とコード共有に向く。今日は線形パターンと軌道グリフのフレームを優先した。",
+      "bodyEn": "SVG/CSSはベクター図形をDOMとして扱えるため、軽量なサンプル公開とコード共有に向く。今日は線形パターンと軌道グリフのフレームを優先した。",
+      "links": [
+        {
+          "label": "MDN SVG",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+        },
+        {
+          "label": "MDN CSS Animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+        }
+      ]
+    },
+    {
+      "title": "Daily Research 2026-08-15",
+      "titleEn": "Daily Research 2026-08-15",
+      "body": "今日はSVG/CSSのベクター性を優先した。ロゴモーション、線形グリフ、軽量Webサンプルには、Canvasよりも図形単位で再編集しやすいSVGが向く。",
+      "bodyEn": "今日はSVG/CSSのベクター性を優先した。ロゴモーション、線形グリフ、軽量Webサンプルには、Canvasよりも図形単位で再編集しやすいSVGが向く。",
+      "links": [
+        {
+          "label": "MDN SVG",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+        },
+        {
+          "label": "MDN CSS Animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+        }
+      ]
+    },
+    {
+      "title": "今日のミニ試作候補",
+      "titleEn": "Today's mini prototype candidate",
+      "body": "Glyph Orbit Score を 20 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
+      "bodyEn": "Glyph Orbit Score is fixed as a 20-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "links": [
+        {
+          "label": "Today's sample",
+          "url": "../outputs/2026-08-15_glyph-orbit-score.html"
+        }
+      ]
+    }
+  ]
+}
