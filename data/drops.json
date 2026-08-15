@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-16",
+      "title": "Vector Signal Rings",
+      "loopSeconds": 16,
+      "palette": [
+        0.558,
+        0.95,
+        0.285,
+        0.275,
+        0.351,
+        0.86
+      ],
+      "copy": "DOM上の図形を日付シードで配置する、コード共有向きのVJ素材。",
+      "why": "販売用の高品質映像は後でMac mini側で生成し、GitHub Pagesでは軽量なベクターサンプルとして見せる運用にする。",
+      "research": [
+        {
+          "date": "2026-08-16",
+          "summary": "今日はSVGのmask/filter方向を見た。販売素材としては、黒背景の発光素材だけでなく、ベクターのロゴ風モーションやUIパターンも別ラインにできる。",
+          "sources": [
+            {
+              "label": "MDN SVG filter",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter",
+              "note": "SVGフィルタ表現の確認。"
+            },
+            {
+              "label": "MDN SVG mask",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask",
+              "note": "マスク表現の確認。"
+            }
+          ],
+          "updatedAt": "2026-08-15T21:45:16.857Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-15",
       "title": "Glyph Orbit Score",
       "loopSeconds": 20,
