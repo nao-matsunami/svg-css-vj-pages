@@ -60,7 +60,19 @@ function buildSvg(piece) {
   const paletteB = cssRgb(piece.palette.slice(3, 6));
   const seed = hash(`${piece.date}:${piece.title}`);
   const variant = pieceVariant(piece);
+  const engine = pieceEngine(piece);
   svg.dataset.variant = String(variant);
+  svg.dataset.engine = engine;
+
+  if (engine === "type-poster") {
+    buildTypePoster(piece, paletteA, paletteB, seed);
+    return;
+  }
+
+  if (engine === "mask-symbols") {
+    buildMaskSymbols(piece, paletteA, paletteB, seed);
+    return;
+  }
 
   const ringCount = variant === 2 ? 5 : 10;
   for (let i = 0; i < ringCount; i += 1) {
@@ -113,6 +125,63 @@ function buildSvg(piece) {
   }
 }
 
+function buildTypePoster(piece, paletteA, paletteB, seed) {
+  const words = piece.title.toUpperCase().split(/\s+/).slice(0, 3);
+  for (let i = 0; i < 10; i += 1) {
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.classList.add("vj-glyph");
+    text.dataset.index = String(i);
+    text.setAttribute("x", "0");
+    text.setAttribute("y", "0");
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("dominant-baseline", "middle");
+    text.setAttribute("font-family", "ui-monospace, SFMono-Regular, Menlo, monospace");
+    text.setAttribute("font-size", String(38 + (i % 3) * 14));
+    text.setAttribute("fill", i % 2 ? paletteA : paletteB);
+    text.setAttribute("fill-opacity", "0.34");
+    text.textContent = words[i % words.length] || "VJ";
+    glyphLayer.append(text);
+  }
+  for (let i = 0; i < 32; i += 1) {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.classList.add("vj-spoke");
+    line.dataset.index = String(i);
+    line.setAttribute("x1", "-460");
+    line.setAttribute("y1", String(-260 + i * 18));
+    line.setAttribute("x2", String(120 + ((i * 17 + seed) % 420)));
+    line.setAttribute("y2", String(-260 + i * 18));
+    line.setAttribute("stroke", i % 2 ? paletteA : paletteB);
+    line.setAttribute("stroke-opacity", "0.24");
+    line.setAttribute("stroke-width", String(2 + (i % 4)));
+    spokeLayer.append(line);
+  }
+}
+
+function buildMaskSymbols(piece, paletteA, paletteB, seed) {
+  for (let i = 0; i < 18; i += 1) {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.classList.add("vj-glyph");
+    path.dataset.index = String(i);
+    path.setAttribute("d", "M0 -42 L36 0 L0 42 L-36 0Z");
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", i % 2 ? paletteA : paletteB);
+    path.setAttribute("stroke-width", String(2 + (i % 5)));
+    path.setAttribute("stroke-opacity", "0.38");
+    glyphLayer.append(path);
+  }
+  for (let i = 0; i < 8; i += 1) {
+    const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    ring.classList.add("vj-ring");
+    ring.dataset.index = String(i);
+    ring.setAttribute("r", String(80 + i * 48 + (seed % 17)));
+    ring.setAttribute("stroke", i % 2 ? paletteA : paletteB);
+    ring.setAttribute("fill", "none");
+    ring.setAttribute("stroke-width", "5");
+    ring.setAttribute("stroke-opacity", "0.28");
+    ringLayer.append(ring);
+  }
+}
+
 function draw(now) {
   const elapsed = isPaused ? pausedAt : (now - startTime) / 1000;
   const speed = calmMotion ? 0.38 : 1;
@@ -124,6 +193,7 @@ function draw(now) {
 
 function renderSvgState(phase) {
   const variant = pieceVariant(activePiece);
+  const engine = pieceEngine(activePiece);
   ringLayer.querySelectorAll(".vj-ring").forEach((ring) => {
     const i = Number(ring.dataset.index);
     const scale = 1 + Math.sin(phase + i * 0.7) * (variant === 2 ? 0.08 : 0.025);
@@ -142,6 +212,18 @@ function renderSvgState(phase) {
 
   glyphLayer.querySelectorAll(".vj-glyph").forEach((rect) => {
     const i = Number(rect.dataset.index);
+    if (engine === "type-poster") {
+      const x = Math.sin(phase + i) * 90;
+      const y = (i - 4.5) * 54 + Math.cos(phase * 0.7 + i) * 18;
+      rect.setAttribute("transform", `translate(${x} ${y}) rotate(${Math.sin(phase + i) * 8})`);
+      return;
+    }
+    if (engine === "mask-symbols") {
+      const orbit = phase + (i / 18) * Math.PI * 2;
+      const radius = 130 + (i % 6) * 48;
+      rect.setAttribute("transform", `translate(${Math.cos(orbit) * radius} ${Math.sin(orbit) * radius * 0.72}) rotate(${toDeg(phase) + i * 12})`);
+      return;
+    }
     const orbit = phase + (i / 12) * Math.PI * 2;
     const radius = variant === 2 ? 100 + (i % 6) * 36 : 180 + (i % 4) * 55;
     const x = Math.cos(orbit) * radius;
@@ -503,11 +585,16 @@ function pieceVariant(piece) {
   return hash(`${piece.date}:${piece.title}:svg`) % 4;
 }
 
+function pieceEngine(piece) {
+  return piece.engine || "vector-orbits";
+}
+
 function makeRecipe(piece) {
   return `<!-- Daily SVG / CSS VJ Loop -->
 <!-- Date: ${piece.date} -->
 <!-- Title: ${piece.title} -->
 <!-- Loop seconds: ${piece.loopSeconds} -->
+<!-- Engine: ${pieceEngine(piece)} -->
 <!-- Variant: ${pieceVariant(piece)} -->
 <!-- Shapes: rings, spokes, orbiting glyph rectangles -->
 <!-- Palette A: ${cssRgb(piece.palette.slice(0, 3))} -->

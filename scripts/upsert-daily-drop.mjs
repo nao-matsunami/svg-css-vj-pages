@@ -8,16 +8,25 @@ const dropsPath = path.join(rootDir, "data", "drops.json");
 const dateArg = process.argv.find((arg) => arg.startsWith("--date="));
 const targetDate = dateArg ? dateArg.slice("--date=".length) : localIsoDate(new Date());
 
-const titles = ["Vector Signal Rings", "Glyph Orbit Score", "Dash Phase Gate", "Logo Pulse Mesh", "Linear Bloom Mark"];
-const copyLines = [
-  "SVGとCSS animationで構成する、軽量なベクターVJループ。",
-  "ロゴモーションやWebサンプルに展開しやすい、線と図形の抽象ループ。",
-  "DOM上の図形を日付シードで配置する、コード共有向きのVJ素材。",
-];
-const whyLines = [
-  "SVG/CSSはベクター図形をDOMとして扱えるため、軽量なサンプル公開とコード共有に向く。今日は線形パターンと軌道グリフのフレームを優先した。",
-  "CanvasやThree.jsと違い、SVG/CSSは図形そのものを編集・再利用しやすい。ロゴモーションやUI的なVJ素材へ展開する前提で作る。",
-  "販売用の高品質映像は後でMac mini側で生成し、GitHub Pagesでは軽量なベクターサンプルとして見せる運用にする。",
+const engines = [
+  {
+    slug: "vector-orbits",
+    titles: ["Vector Signal Rings", "Glyph Orbit Score", "Dash Phase Gate", "Logo Pulse Mesh", "Linear Bloom Mark"],
+    copy: "SVGとCSS animationで構成する、軽量なベクターVJループ。",
+    why: "既存系列として、リング、スポーク、軌道グリフを増やす。DOM上の図形を編集しやすい形で残す。",
+  },
+  {
+    slug: "type-poster",
+    titles: ["SVG Type Poster", "Kinetic Word Stack", "Vector Caption Wall", "Monospace Motion Plate"],
+    copy: "SVGテキストとラインを使う、ポスター/タイポグラフィ系VJループ。",
+    why: "図形抽象とは別に、文字や見出しを動かす文脈を作る。イベント名やブランドモーションに展開しやすい。",
+  },
+  {
+    slug: "mask-symbols",
+    titles: ["SVG Mask Symbol Field", "Diamond Matte Orbit", "Cutout Signal Plate", "Vector Alpha Symbol"],
+    copy: "記号形状とマスク化しやすい輪郭を主役にしたSVGループ。",
+    why: "黒抜きやアルファ素材にしやすい形状をSVG側にも持たせる。販売用素材として再利用しやすい。",
+  },
 ];
 
 const data = JSON.parse(await fs.readFile(dropsPath, "utf8"));
@@ -28,15 +37,17 @@ if (existing) {
 }
 
 const seed = hash(targetDate);
+const engine = engines[seed % engines.length];
 const hueA = fract(seed * 0.0183);
 const hueB = fract(hueA + 0.38);
 const drop = {
   date: targetDate,
-  title: titles[seed % titles.length],
+  title: engine.titles[seed % engine.titles.length],
+  engine: engine.slug,
   loopSeconds: [8, 12, 16, 20][seed % 4],
   palette: [...hsv(hueA, 0.7, 0.95), ...hsv(hueB, 0.68, 0.86)],
-  copy: copyLines[seed % copyLines.length],
-  why: whyLines[seed % whyLines.length],
+  copy: engine.copy,
+  why: engine.why,
 };
 
 data.drops.unshift(drop);
