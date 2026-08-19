@@ -13,6 +13,40 @@
   ],
   "drops": [
     {
+      "date": "2026-08-20",
+      "title": "Linear Bloom Mark",
+      "loopSeconds": 12,
+      "palette": [
+        0.285,
+        0.95,
+        0.697,
+        0.802,
+        0.275,
+        0.86
+      ],
+      "copy": "SVGとCSS animationで構成する、軽量なベクターVJループ。",
+      "why": "SVG/CSSはベクター図形をDOMとして扱えるため、軽量なサンプル公開とコード共有に向く。今日は線形パターンと軌道グリフのフレームを優先した。",
+      "research": [
+        {
+          "date": "2026-08-20",
+          "summary": "今日はSVG/CSSのベクター性を優先した。ロゴモーション、線形グリフ、軽量Webサンプルには、Canvasよりも図形単位で再編集しやすいSVGが向く。",
+          "sources": [
+            {
+              "label": "MDN SVG",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG",
+              "note": "SVG図形と属性確認の起点。"
+            },
+            {
+              "label": "MDN CSS Animations",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations",
+              "note": "CSSループアニメーション確認。"
+            }
+          ],
+          "updatedAt": "2026-08-19T21:45:11.709Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-19",
       "title": "Linear Bloom Mark",
       "loopSeconds": 20,
