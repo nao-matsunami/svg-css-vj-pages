@@ -59,26 +59,30 @@ function buildSvg(piece) {
   const paletteA = cssRgb(piece.palette.slice(0, 3));
   const paletteB = cssRgb(piece.palette.slice(3, 6));
   const seed = hash(`${piece.date}:${piece.title}`);
+  const variant = pieceVariant(piece);
+  svg.dataset.variant = String(variant);
 
-  for (let i = 0; i < 10; i += 1) {
+  const ringCount = variant === 2 ? 5 : 10;
+  for (let i = 0; i < ringCount; i += 1) {
     const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     ring.classList.add("vj-ring");
     ring.dataset.index = String(i);
-    ring.setAttribute("r", String(70 + i * 42));
+    ring.setAttribute("r", String(variant === 1 ? 44 + i * 54 : 70 + i * 42));
     ring.setAttribute("stroke", i % 2 === 0 ? paletteA : paletteB);
-    ring.setAttribute("stroke-width", String(3 + (i % 4)));
+    ring.setAttribute("stroke-width", String(variant === 2 ? 8 + (i % 3) : 3 + (i % 4)));
     ring.setAttribute("stroke-opacity", String(0.18 + (10 - i) * 0.035));
-    ring.setAttribute("stroke-dasharray", `${18 + i * 3} ${22 + i * 4}`);
+    ring.setAttribute("stroke-dasharray", variant === 0 ? `${18 + i * 3} ${22 + i * 4}` : `${6 + i * 2} ${34 + i * 5}`);
     ringLayer.append(ring);
   }
 
-  for (let i = 0; i < 48; i += 1) {
+  const spokeCount = variant === 3 ? 18 : 48;
+  for (let i = 0; i < spokeCount; i += 1) {
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
     line.classList.add("vj-spoke");
     line.dataset.index = String(i);
     line.setAttribute("x1", "0");
     line.setAttribute("y1", "0");
-    line.setAttribute("x2", String(130 + ((i * 19 + seed) % 260)));
+    line.setAttribute("x2", String(variant === 3 ? 520 : 130 + ((i * 19 + seed) % 260)));
     line.setAttribute("y2", "0");
     line.setAttribute("stroke", i % 2 === 0 ? paletteA : paletteB);
     line.setAttribute("stroke-width", String(1 + (i % 3)));
@@ -87,18 +91,25 @@ function buildSvg(piece) {
   }
 
   for (let i = 0; i < 12; i += 1) {
-    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    rect.classList.add("vj-glyph");
-    rect.dataset.index = String(i);
-    rect.setAttribute("x", "-26");
-    rect.setAttribute("y", "-26");
-    rect.setAttribute("width", "52");
-    rect.setAttribute("height", "52");
-    rect.setAttribute("rx", "4");
-    rect.setAttribute("stroke", i % 2 === 0 ? paletteA : paletteB);
-    rect.setAttribute("stroke-width", "3");
-    rect.setAttribute("stroke-opacity", "0.42");
-    glyphLayer.append(rect);
+    const glyph = document.createElementNS("http://www.w3.org/2000/svg", variant === 1 ? "path" : variant === 2 ? "circle" : "rect");
+    glyph.classList.add("vj-glyph");
+    glyph.dataset.index = String(i);
+    if (variant === 1) {
+      glyph.setAttribute("d", "M-32 0 C-12 -38 18 -38 32 0 C12 38 -18 38 -32 0Z");
+    } else if (variant === 2) {
+      glyph.setAttribute("r", String(16 + (i % 4) * 6));
+    } else {
+      glyph.setAttribute("x", "-26");
+      glyph.setAttribute("y", "-26");
+      glyph.setAttribute("width", "52");
+      glyph.setAttribute("height", "52");
+      glyph.setAttribute("rx", variant === 3 ? "0" : "4");
+    }
+    glyph.setAttribute("stroke", i % 2 === 0 ? paletteA : paletteB);
+    glyph.setAttribute("fill", "none");
+    glyph.setAttribute("stroke-width", variant === 2 ? "5" : "3");
+    glyph.setAttribute("stroke-opacity", "0.42");
+    glyphLayer.append(glyph);
   }
 }
 
@@ -112,16 +123,18 @@ function draw(now) {
 }
 
 function renderSvgState(phase) {
+  const variant = pieceVariant(activePiece);
   ringLayer.querySelectorAll(".vj-ring").forEach((ring) => {
     const i = Number(ring.dataset.index);
-    const scale = 1 + Math.sin(phase + i * 0.7) * 0.025;
-    ring.setAttribute("transform", `rotate(${toDeg(phase) * (i % 2 === 0 ? 1 : -1) + i * 8}) scale(${scale})`);
-    ring.setAttribute("stroke-dashoffset", String((phase * 36 + i * 11) % 200));
+    const scale = 1 + Math.sin(phase + i * 0.7) * (variant === 2 ? 0.08 : 0.025);
+    const rotate = toDeg(phase) * (i % 2 === 0 ? 1 : -1) * (variant === 3 ? 0.25 : 1) + i * 8;
+    ring.setAttribute("transform", `rotate(${rotate}) scale(${scale})`);
+    ring.setAttribute("stroke-dashoffset", String((phase * (variant === 1 ? 90 : 36) + i * 11) % 200));
   });
 
   spokeLayer.querySelectorAll(".vj-spoke").forEach((line) => {
     const i = Number(line.dataset.index);
-    const angle = toDeg(phase) + i * 7.5;
+    const angle = variant === 3 ? i * 10 + Math.sin(phase + i) * 12 : toDeg(phase) + i * 7.5;
     const opacity = 0.12 + (0.5 + 0.5 * Math.sin(phase * 2 + i)) * 0.24;
     line.setAttribute("transform", `rotate(${angle})`);
     line.setAttribute("stroke-opacity", String(opacity));
@@ -130,10 +143,10 @@ function renderSvgState(phase) {
   glyphLayer.querySelectorAll(".vj-glyph").forEach((rect) => {
     const i = Number(rect.dataset.index);
     const orbit = phase + (i / 12) * Math.PI * 2;
-    const radius = 180 + (i % 4) * 55;
+    const radius = variant === 2 ? 100 + (i % 6) * 36 : 180 + (i % 4) * 55;
     const x = Math.cos(orbit) * radius;
     const y = Math.sin(orbit * 0.86) * radius * 0.72;
-    const angle = toDeg(-phase * 1.4 + i * 18);
+    const angle = toDeg((variant === 1 ? phase : -phase * 1.4) + i * 18);
     rect.setAttribute("transform", `translate(${x} ${y}) rotate(${angle})`);
   });
 }
@@ -159,23 +172,26 @@ function renderCanvasState(targetCanvas, phase, alpha = false) {
 function drawVectorRecipe(ctx, piece, phase, alpha) {
   const paletteA = cssRgb(piece.palette.slice(0, 3));
   const paletteB = cssRgb(piece.palette.slice(3, 6));
+  const variant = pieceVariant(piece);
   ctx.globalCompositeOperation = "lighter";
-  for (let i = 0; i < 10; i += 1) {
+  const ringCount = variant === 2 ? 5 : 10;
+  for (let i = 0; i < ringCount; i += 1) {
     ctx.save();
     ctx.rotate(phase * (i % 2 === 0 ? 1 : -1) + i * 0.14);
     ctx.scale(1 + Math.sin(phase + i * 0.7) * 0.025, 1 + Math.sin(phase + i * 0.7) * 0.025);
     ctx.strokeStyle = i % 2 === 0 ? paletteA : paletteB;
     ctx.globalAlpha = 0.18 + (10 - i) * 0.035;
     ctx.lineWidth = 3 + (i % 4);
-    ctx.setLineDash([18 + i * 3, 22 + i * 4]);
+    ctx.setLineDash(variant === 0 ? [18 + i * 3, 22 + i * 4] : [6 + i * 2, 34 + i * 5]);
     ctx.lineDashOffset = -((phase * 36 + i * 11) % 200);
     ctx.beginPath();
-    ctx.arc(0, 0, 70 + i * 42, 0, Math.PI * 2);
+    ctx.arc(0, 0, variant === 1 ? 44 + i * 54 : 70 + i * 42, 0, Math.PI * 2);
     ctx.stroke();
     ctx.restore();
   }
 
-  for (let i = 0; i < 48; i += 1) {
+  const spokeCount = variant === 3 ? 18 : 48;
+  for (let i = 0; i < spokeCount; i += 1) {
     ctx.save();
     ctx.rotate(phase + i * 0.131);
     ctx.globalAlpha = 0.12 + (0.5 + 0.5 * Math.sin(phase * 2 + i)) * 0.24;
@@ -183,21 +199,33 @@ function drawVectorRecipe(ctx, piece, phase, alpha) {
     ctx.lineWidth = 1 + (i % 3);
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    ctx.lineTo(130 + ((i * 19 + hash(piece.date)) % 260), 0);
+    ctx.lineTo(variant === 3 ? 520 : 130 + ((i * 19 + hash(piece.date)) % 260), 0);
     ctx.stroke();
     ctx.restore();
   }
 
   for (let i = 0; i < 12; i += 1) {
     const orbit = phase + (i / 12) * Math.PI * 2;
-    const radius = 180 + (i % 4) * 55;
+    const radius = variant === 2 ? 100 + (i % 6) * 36 : 180 + (i % 4) * 55;
     ctx.save();
     ctx.translate(Math.cos(orbit) * radius, Math.sin(orbit * 0.86) * radius * 0.72);
     ctx.rotate(-phase * 1.4 + i * 0.314);
     ctx.globalAlpha = alpha ? 0.82 : 0.42;
     ctx.strokeStyle = i % 2 === 0 ? paletteA : paletteB;
     ctx.lineWidth = 3;
-    ctx.strokeRect(-26, -26, 52, 52);
+    if (variant === 1) {
+      ctx.beginPath();
+      ctx.moveTo(-32, 0);
+      ctx.bezierCurveTo(-12, -38, 18, -38, 32, 0);
+      ctx.bezierCurveTo(12, 38, -18, 38, -32, 0);
+      ctx.stroke();
+    } else if (variant === 2) {
+      ctx.beginPath();
+      ctx.arc(0, 0, 16 + (i % 4) * 6, 0, Math.PI * 2);
+      ctx.stroke();
+    } else {
+      ctx.strokeRect(-26, -26, 52, 52);
+    }
     ctx.restore();
   }
 }
@@ -467,11 +495,20 @@ function pickPiece(date) {
   };
 }
 
+function pieceVariant(piece) {
+  const title = String(piece.title || "").toLowerCase();
+  if (title.includes("glyph") || title.includes("logo")) return 3;
+  if (title.includes("ring") || title.includes("signal")) return 1;
+  if (title.includes("bloom") || title.includes("dash")) return 2;
+  return hash(`${piece.date}:${piece.title}:svg`) % 4;
+}
+
 function makeRecipe(piece) {
   return `<!-- Daily SVG / CSS VJ Loop -->
 <!-- Date: ${piece.date} -->
 <!-- Title: ${piece.title} -->
 <!-- Loop seconds: ${piece.loopSeconds} -->
+<!-- Variant: ${pieceVariant(piece)} -->
 <!-- Shapes: rings, spokes, orbiting glyph rectangles -->
 <!-- Palette A: ${cssRgb(piece.palette.slice(0, 3))} -->
 <!-- Palette B: ${cssRgb(piece.palette.slice(3, 6))} -->`;
