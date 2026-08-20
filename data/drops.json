@@ -13,6 +13,41 @@
   ],
   "drops": [
     {
+      "date": "2026-08-21",
+      "title": "SVG Mask Symbol Field",
+      "engine": "mask-symbols",
+      "loopSeconds": 8,
+      "palette": [
+        0.95,
+        0.285,
+        0.826,
+        0.587,
+        0.86,
+        0.275
+      ],
+      "copy": "記号形状とマスク化しやすい輪郭を主役にしたSVGループ。",
+      "why": "黒抜きやアルファ素材にしやすい形状をSVG側にも持たせる。販売用素材として再利用しやすい。",
+      "research": [
+        {
+          "date": "2026-08-21",
+          "summary": "今日はSVGのmask/filter方向を見た。販売素材としては、黒背景の発光素材だけでなく、ベクターのロゴ風モーションやUIパターンも別ラインにできる。",
+          "sources": [
+            {
+              "label": "MDN SVG filter",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter",
+              "note": "SVGフィルタ表現の確認。"
+            },
+            {
+              "label": "MDN SVG mask",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask",
+              "note": "マスク表現の確認。"
+            }
+          ],
+          "updatedAt": "2026-08-20T21:45:15.240Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-20",
       "title": "Linear Bloom Mark",
       "engine": "vector-orbits",
