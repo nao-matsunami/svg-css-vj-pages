@@ -13,6 +13,41 @@
   ],
   "drops": [
     {
+      "date": "2026-08-24",
+      "title": "Diamond Matte Orbit",
+      "engine": "mask-symbols",
+      "loopSeconds": 12,
+      "palette": [
+        0.95,
+        0.874,
+        0.285,
+        0.275,
+        0.764,
+        0.86
+      ],
+      "copy": "記号形状とマスク化しやすい輪郭を主役にしたSVGループ。",
+      "why": "黒抜きやアルファ素材にしやすい形状をSVG側にも持たせる。販売用素材として再利用しやすい。",
+      "research": [
+        {
+          "date": "2026-08-24",
+          "summary": "今日はSVG/CSSのベクター性を優先した。ロゴモーション、線形グリフ、軽量Webサンプルには、Canvasよりも図形単位で再編集しやすいSVGが向く。",
+          "sources": [
+            {
+              "label": "MDN SVG",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG",
+              "note": "SVG図形と属性確認の起点。"
+            },
+            {
+              "label": "MDN CSS Animations",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations",
+              "note": "CSSループアニメーション確認。"
+            }
+          ],
+          "updatedAt": "2026-08-23T21:45:13.433Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-23",
       "title": "Vector Caption Wall",
       "engine": "type-poster",

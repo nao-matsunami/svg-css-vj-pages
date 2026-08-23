@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-24",
+  "headline": "Diamond Matte Orbit",
+  "headlineEn": "Diamond Matte Orbit",
+  "summary": "記号形状とマスク化しやすい輪郭を主役にしたSVGループ。",
+  "summaryEn": "記号形状とマスク化しやすい輪郭を主役にしたSVGループ。",
+  "links": [
+    {
+      "label": "Today's sample",
+      "url": "../outputs/2026-08-24_diamond-matte-orbit.html"
+    },
+    {
+      "label": "Live preview",
+      "url": "../live.html"
+    },
+    {
+      "label": "MDN SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+    },
+    {
+      "label": "MDN CSS Animations",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+    },
+    {
+      "label": "MDN SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+    },
+    {
+      "label": "MDN CSS Animations",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+    }
+  ],
+  "sections": [
+    {
+      "title": "今日の制作メモ",
+      "titleEn": "Production note",
+      "body": "黒抜きやアルファ素材にしやすい形状をSVG側にも持たせる。販売用素材として再利用しやすい。",
+      "bodyEn": "黒抜きやアルファ素材にしやすい形状をSVG側にも持たせる。販売用素材として再利用しやすい。",
+      "links": [
+        {
+          "label": "MDN SVG",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+        },
+        {
+          "label": "MDN CSS Animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+        }
+      ]
+    },
+    {
+      "title": "Daily Research 2026-08-24",
+      "titleEn": "Daily Research 2026-08-24",
+      "body": "今日はSVG/CSSのベクター性を優先した。ロゴモーション、線形グリフ、軽量Webサンプルには、Canvasよりも図形単位で再編集しやすいSVGが向く。",
+      "bodyEn": "今日はSVG/CSSのベクター性を優先した。ロゴモーション、線形グリフ、軽量Webサンプルには、Canvasよりも図形単位で再編集しやすいSVGが向く。",
+      "links": [
+        {
+          "label": "MDN SVG",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
+        },
+        {
+          "label": "MDN CSS Animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations"
+        }
+      ]
+    },
+    {
+      "title": "今日のミニ試作候補",
+      "titleEn": "Today's mini prototype candidate",
+      "body": "Diamond Matte Orbit を 12 秒でループするVJサンプルとして固定しました。GitHub Pagesでは軽量プレビューを見せ、販売用のMP4やalpha MOVは選抜後にMac miniで固定FPSレンダーします。",
+      "bodyEn": "Diamond Matte Orbit is fixed as a 12-second looping VJ sample. GitHub Pages carries the lightweight preview, while saleable MP4 and alpha MOV masters should be rendered later on the Mac mini at fixed FPS.",
+      "links": [
+        {
+          "label": "Today's sample",
+          "url": "../outputs/2026-08-24_diamond-matte-orbit.html"
+        }
+      ]
+    }
+  ]
+}
