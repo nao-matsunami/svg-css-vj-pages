@@ -13,6 +13,41 @@
   ],
   "drops": [
     {
+      "date": "2026-08-28",
+      "title": "Kinetic Word Stack",
+      "engine": "type-poster",
+      "loopSeconds": 12,
+      "palette": [
+        0.95,
+        0.285,
+        0.85,
+        0.609,
+        0.86,
+        0.275
+      ],
+      "copy": "SVGテキストとラインを使う、ポスター/タイポグラフィ系VJループ。",
+      "why": "図形抽象とは別に、文字や見出しを動かす文脈を作る。イベント名やブランドモーションに展開しやすい。",
+      "research": [
+        {
+          "date": "2026-08-28",
+          "summary": "今日はSVG/CSSのベクター性を優先した。ロゴモーション、線形グリフ、軽量Webサンプルには、Canvasよりも図形単位で再編集しやすいSVGが向く。",
+          "sources": [
+            {
+              "label": "MDN SVG",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG",
+              "note": "SVG図形と属性確認の起点。"
+            },
+            {
+              "label": "MDN CSS Animations",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations",
+              "note": "CSSループアニメーション確認。"
+            }
+          ],
+          "updatedAt": "2026-08-27T21:45:12.219Z"
+        }
+      ]
+    },
+    {
       "date": "2026-08-27",
       "title": "Glyph Orbit Score",
       "engine": "vector-orbits",
