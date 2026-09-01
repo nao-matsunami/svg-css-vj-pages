@@ -13,6 +13,41 @@
   ],
   "drops": [
     {
+      "date": "2026-09-02",
+      "title": "Linear Bloom Mark",
+      "engine": "vector-orbits",
+      "loopSeconds": 16,
+      "palette": [
+        0.95,
+        0.86,
+        0.285,
+        0.275,
+        0.775,
+        0.86
+      ],
+      "copy": "SVGとCSS animationで構成する、軽量なベクターVJループ。",
+      "why": "既存系列として、リング、スポーク、軌道グリフを増やす。DOM上の図形を編集しやすい形で残す。",
+      "research": [
+        {
+          "date": "2026-09-02",
+          "summary": "今日はSVGのmask/filter方向を見た。販売素材としては、黒背景の発光素材だけでなく、ベクターのロゴ風モーションやUIパターンも別ラインにできる。",
+          "sources": [
+            {
+              "label": "MDN SVG filter",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter",
+              "note": "SVGフィルタ表現の確認。"
+            },
+            {
+              "label": "MDN SVG mask",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask",
+              "note": "マスク表現の確認。"
+            }
+          ],
+          "updatedAt": "2026-09-01T21:45:16.455Z"
+        }
+      ]
+    },
+    {
       "date": "2026-09-01",
       "title": "Monospace Motion Plate",
       "engine": "type-poster",
